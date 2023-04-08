@@ -1,0 +1,67 @@
+triplistdiscount: [{
+        img: 'https://i.pinimg.com/736x/15/94/ba/1594ba0ee867f9185648d42fdbf86f58.jpg',
+        city: 'Madrid',
+        country: 'Spain',
+        score: 4.8,
+        price: 950,
+        discount: 850
+      },
+      {
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdb2WW1bY-cuJahQAxNEvNATkXIgsD32XkGWTmIKM9cianGK6uj_nfEMc72MUyJ9vlnl0&usqp=CAU',
+        city: 'Firenze',
+        country: 'Italy',
+        score: 4.5,
+        price: 850,
+        discount: 750
+      },
+      {
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK4IFGyvCv2hvw8lOr9Hrdf4uLghoj9jlPvZpFY0dkUWhG_kNJ7FDTmkCptaOOpfABdd0&usqp=CAU',
+        city: 'Paris',
+        country: 'France',
+        score: 4.4,
+        price: 699,
+        discount: 599
+      },
+      {
+        img: 'https://p4.wallpaperbetter.com/wallpaper/124/642/367/aerial-view-of-new-york-city-at-dusk-wallpaper-preview.jpg',
+        city: 'London',
+        country: 'UK',
+        score: 4.8,
+        price: 850,
+        discount: 850
+      }
+    ]
+
+        bestTrips: [
+      {
+        image: 'https://img.freepik.com/fotos-premium/torre-eiffel-al-atardecer-paris-francia_79295-14335.jpg?w=2000',
+        city: 'Rome',
+        country: 'Italy',
+        timetrip: '10 Days Trip',
+        price: 5.42,
+        score: 4.8
+    },
+    {
+        image: 'https://live.staticflickr.com/3412/3414900349_83b31bd92a_c.jpg',
+        city: 'London',
+        country: 'UK',
+        timetrip: '10 Days Trip',
+        price: 5.42,
+        score: 4.8
+    },
+    {
+        image: 'https://st.depositphotos.com/1400069/3488/i/950/depositphotos_34888041-stock-photo-car-in-the-autumn-forest.jpg',
+        city: 'Osaca',
+        country: 'Japan',
+        timetrip: '10 Days Trip',
+        price: 5.42,
+        score: 4.8
+    }
+  ]
+  
+  review:[{
+    text: 'On the windows talking painted pasture, yet its express parties ...',
+    reviewer: "Mike Taylor",
+    city: "Lahore",
+    country: "Pakistan"
+  }]
