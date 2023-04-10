@@ -9,7 +9,7 @@
 
       <b-col class="row-2">
         <b-nav >
-          <b-nav-item class="text-dark" v-for="item in itemsNav" :key="item" active>
+          <b-nav-item class="text-dark" v-for=" (item, i) in itemsNav" :key="'A' + i" active>
              {{ item }}
           </b-nav-item>
         </b-nav>
@@ -85,7 +85,7 @@
 
     <b-row class="pag2-row2">
       <div class="container-cards-pag2" >
-        <div class="style-card" v-for= "(item, i) in contentCard" :key="i">
+        <div class="style-card" v-for= "(item, i) in contentCard" :key="'B' + i">
           <FirstCard :img="item.img" :title="item.title" :text="item.text"/>
         </div>
       </div>
@@ -100,7 +100,7 @@
       </b-row>
 
       <b-row class="pag3-row2">
-        <b-col class="container-card-pag3" v-for="item in triplistdiscount" :key="item">
+        <b-col class="container-card-pag3" v-for= "(item, i) in triplistdiscount" :key="'C' + i">
           <DealsAndDiscounts :img="item.img" :city="item.city" :country="item.country" :score="item.score" :price="item.price" :discount="item.discount"/>
         </b-col>
       </b-row>
@@ -122,7 +122,7 @@
     </b-row>
 
     <b-row class="pag4-row3">
-      <b-col class="container-card-pag3" v-for="item in bestTrips" :key="item">
+      <b-col class="container-card-pag3" v-for="(item, i) in bestTrips" :key="'D' + i">
         <BestCities :image="item.image" :city="item.city" :country="item.country" :timetrip="item.timetrip" :price="item.price" :score="item.score"/>
       </b-col>
     </b-row>
@@ -138,15 +138,15 @@
           </b-col>
 
           <b-col cols="7" class="row1-col2 container-review">
-            <div class="review" v-for="(item ,i) in review" :key="i">
+            <div class="review" v-for="(item ,i) in review" :key="'E' + i">
 
                   <img class="img-reviewer" v-bind:src="item.image" alt="">
 
-              <div class="review-content" v-for="(item ,i) in review" :key="i">
+              <div class="review-content" v-for="(item ,i) in review" :key="'F' + i">
                   {{ item.text }}
               </div>
 
-              <div class="name" v-for="(item ,i) in review" :key="i">
+              <div class="name" v-for="(item ,i) in review" :key="'G' + i">
                 {{ item.reviewer }}
                 <br>
                 {{ item.city }},
@@ -165,7 +165,7 @@
     </b-row>
       
     <b-row class="pag6-row2">
-      <b-col class="container-card-pag6" v-for= "(item, i) in blogpost" :key="i">
+      <b-col class="container-card-pag6" v-for= "(item, i) in blogpost" :key="'H' + i">
         <BlogPost :img="item.img" :title="item.title" :date="item.date"/>
       </b-col>
     </b-row>
@@ -198,7 +198,7 @@
           <li>Company</li>
         </ul>
         <ul class="company-items">
-          <li v-for="(item, i) in companyitems" :key="i">
+          <li v-for="(item, i) in companyitems" :key="'I' + i">
             {{ item }}
           </li>
         </ul>
@@ -209,7 +209,7 @@
           <li>Contact</li>
         </ul>
         <ul class="contact-items">
-          <li v-for="(item, i) in contactitems" :key="i">
+          <li v-for="(item, i) in contactitems" :key="'J' + i">
             {{ item }}
           </li>
         </ul>
@@ -220,7 +220,7 @@
           <li>More</li>
         </ul>
         <ul class="more-items">
-          <li v-for="(item, i) in moreitems" :key="i">
+          <li v-for="(item, i) in moreitems" :key="'K' + i">
             {{ item }}
           </li>
         </ul>
@@ -241,10 +241,13 @@
 </template>
 
 <script>
+import axios from 'axios'
 import FirstCard from './components/FirstCard.vue'
 import DealsAndDiscounts from './components/DealsAndDiscounts.vue'
 import BestCities from './components/BestCities.vue'
 import BlogPost from './components/BlogPost.vue'
+
+axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
 export default {
   name: 'App',
@@ -277,38 +280,8 @@ export default {
         text: 'Start and explore a wide and extensive range of exciting travel experience.'
       }],
 
-      triplistdiscount: [{
-        img: 'https://i.pinimg.com/736x/15/94/ba/1594ba0ee867f9185648d42fdbf86f58.jpg',
-        city: 'Madrid',
-        country: 'Spain',
-        score: 4.8,
-        price: 950,
-        discount: 850
-      },
-      {
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdb2WW1bY-cuJahQAxNEvNATkXIgsD32XkGWTmIKM9cianGK6uj_nfEMc72MUyJ9vlnl0&usqp=CAU',
-        city: 'Firenze',
-        country: 'Italy',
-        score: 4.5,
-        price: 850,
-        discount: 750
-      },
-      {
-        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK4IFGyvCv2hvw8lOr9Hrdf4uLghoj9jlPvZpFY0dkUWhG_kNJ7FDTmkCptaOOpfABdd0&usqp=CAU',
-        city: 'Paris',
-        country: 'France',
-        score: 4.4,
-        price: 699,
-        discount: 599
-      },
-      {
-        img: 'https://p4.wallpaperbetter.com/wallpaper/124/642/367/aerial-view-of-new-york-city-at-dusk-wallpaper-preview.jpg',
-        city: 'London',
-        country: 'UK',
-        score: 4.8,
-        price: 850,
-        discount: 850
-      }
+      triplistdiscount: [
+
     ],
     rows: 100,
     currentPage:1,
@@ -368,6 +341,42 @@ export default {
   moreitems: ["Press Centre", "Our Blog", "Low fare tips"]
   
     }
+  },
+  // methods: {
+  //   getTrips() {
+  //     fetch(
+  //       "http://127.0.0.1:8000/trip/?sort_by=discount",
+  //       {
+  //         mode: 'no-cors',
+  //         headers: {"Content-Type": "application/json", "Access-Control-Allow-Origin": "*"}
+  //       }
+  //       )
+  //       .then((response) => {
+  //         console.log ("Trips", response.json())
+  //         return response.json()
+  //       })
+  //       .then((data) => {
+  //         console.log("Trips", data)
+  //         this.triplistdiscount = data
+  //       })
+  //     },
+  // },
+
+  mounted () {
+    axios
+      .get('http://127.0.0.1:8082/trip/?sort_by=discount', {
+        headers: {
+       'Access-Control-Allow-Origin': '*',
+       'Content-type': 'application/json',
+    }
+      })
+    .then((response) => {
+          return response["data"]
+        })
+        .then((data) => {
+          console.log("Trips", data)
+          this.triplistdiscount = data
+        })
   }
 }
 </script>

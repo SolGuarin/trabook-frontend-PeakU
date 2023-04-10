@@ -14,7 +14,7 @@ export default {
   props: {
     img: String,
     title: String,
-    date: Date
+    date: String
   }
 }
 </script>
