@@ -5,7 +5,7 @@
                 <b-row>
                     <b-col class="City">
                         <p class="card-title">{{ city }}, {{ country }}</p>
-                        <p class="trip-time"> {{ timetrip }}</p>
+                        <p class="trip-time"> {{ days_trip }} Days Trip</p>
                     </b-col>
                     <b-col class="price-score">
                         <p class="price">${{ price }}k</p>
@@ -23,7 +23,7 @@ export default {
     image: String,
     city: String,
     country: String,
-    timetrip: String,
+    days_trip: String,
     price: Number,
     score: Number
   }

@@ -101,7 +101,7 @@
 
       <b-row class="pag3-row2">
         <b-col class="container-card-pag3" v-for= "(item, i) in triplistdiscount" :key="'C' + i">
-          <DealsAndDiscounts :img="item.img" :city="item.city" :country="item.country" :score="item.score" :price="item.price" :discount="item.discount"/>
+          <DealsAndDiscounts :image="item.image" :city="item.city" :country="item.country" :score="item.score" :price="item.price" :promo_price="item.promo_price"/>
         </b-col>
       </b-row>
 
@@ -123,7 +123,7 @@
 
     <b-row class="pag4-row3">
       <b-col class="container-card-pag3" v-for="(item, i) in bestTrips" :key="'D' + i">
-        <BestCities :image="item.image" :city="item.city" :country="item.country" :timetrip="item.timetrip" :price="item.price" :score="item.score"/>
+        <BestCities :image="item.image" :city="item.city" :country="item.country" :days_trip="item.days_trip" :price="item.price" :score="item.score"/>
       </b-col>
     </b-row>
   </b-container>
@@ -166,7 +166,7 @@
       
     <b-row class="pag6-row2">
       <b-col class="container-card-pag6" v-for= "(item, i) in blogpost" :key="'H' + i">
-        <BlogPost :img="item.img" :title="item.title" :date="item.date"/>
+        <BlogPost :image="item.image" :title="item.title" :date="item.date"/>
       </b-col>
     </b-row>
   </b-container>
@@ -282,101 +282,93 @@ export default {
 
       triplistdiscount: [
 
-    ],
-    rows: 100,
-    currentPage:1,
-    bestTrips: [
-      {
-        image: 'https://img.freepik.com/fotos-premium/torre-eiffel-al-atardecer-paris-francia_79295-14335.jpg?w=2000',
-        city: 'Rome',
-        country: 'Italy',
-        timetrip: '10 Days Trip',
-        price: 5.42,
-        score: 4.8
-    },
-    {
-        image: 'https://live.staticflickr.com/3412/3414900349_83b31bd92a_c.jpg',
-        city: 'London',
-        country: 'UK',
-        timetrip: '10 Days Trip',
-        price: 5.42,
-        score: 4.8
-    },
-    {
-        image: 'https://st.depositphotos.com/1400069/3488/i/950/depositphotos_34888041-stock-photo-car-in-the-autumn-forest.jpg',
-        city: 'Osaca',
-        country: 'Japan',
-        timetrip: '10 Days Trip',
-        price: 5.42,
-        score: 4.8
-    }
-  ],
-  review:[{
-    image: 'https://img.freepik.com/foto-gratis/retrato-hombre-blanco-aislado_53876-40306.jpg?w=2000',
-    text: 'Me gusta pensar que tengo estándares bastante altos en lo que respecta a las actividades navideñas, pero esto fue realmente mágico. Me gusta pensar que tengo estándares bastante altos en lo que respecta a las actividades navideñas, pero esto fue realmente mágico',
-    reviewer: "Mike Taylor",
-    city: "Lahore",
-    country: "Pakistan"
-  }],
+      ],
+      rows: 100,
+      currentPage:1,
+      bestTrips: [
+ 
+      ],
+      review:[
+
+      ],
   
-  blogpost:[{
-    img: 'https://cdn.create.vista.com/api/media/small/361745762/stock-photo-red-orange-lifeguard-hut-south',
-    title: 'The Amazing Difference a Year of Travelling.',
-    date: '2021-07-27'
-  },{
-    img: 'https://ideawallpapers.com/wp-content/uploads/2019/03/iphone-wallpapers-23.jpg',
-    title: 'Travel far enouhg, you meet yourself.',
-    date: '2021-07-27'
-  },{
-    img: 'https://img.freepik.com/fotos-premium/casa-salvavidas-playa-arena-miami-ee-uu_474717-101928.jpg?w=2000',
-    title: 'How to Save Money While Visiting Africa.',
-    date: '2021-07-27'
-  },{
-    img: 'https://wallpapercave.com/wp/wp9796539.jpg',
-    title: 'Reflections on 5 Months of Travel: Time to Hang.',
-    date: '2021-07-27'
-  }],
-  companyitems: ["About", "Careers", "Logistic", "Privacy & Policy"],
-  contactitems: ["Help/FAQ", "Press", "Affilates"],
-  moreitems: ["Press Centre", "Our Blog", "Low fare tips"]
+      blogpost:[
+
+      ],
+      companyitems: ["About", "Careers", "Logistic", "Privacy & Policy"],
+      contactitems: ["Help/FAQ", "Press", "Affilates"],
+      moreitems: ["Press Centre", "Our Blog", "Low fare tips"]
   
     }
   },
-  // methods: {
-  //   getTrips() {
-  //     fetch(
-  //       "http://127.0.0.1:8000/trip/?sort_by=discount",
-  //       {
-  //         mode: 'no-cors',
-  //         headers: {"Content-Type": "application/json", "Access-Control-Allow-Origin": "*"}
-  //       }
-  //       )
-  //       .then((response) => {
-  //         console.log ("Trips", response.json())
-  //         return response.json()
-  //       })
-  //       .then((data) => {
-  //         console.log("Trips", data)
-  //         this.triplistdiscount = data
-  //       })
-  //     },
-  // },
+  methods: {
+    getTrips () {
+      axios.get('http://127.0.0.1:8082/trip/?sort_by=discount&limit=4', {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-type': 'application/json',
+        }
+      })
+      .then((response) => {
+          return response["data"]
+      })
+      .then((data) => {
+        this.triplistdiscount = data
+      })
+    },
+
+    getBestTrip () {
+      axios.get('http://127.0.0.1:8082/trip/?limit=3&sort_by=score', {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-type': 'application/json',
+        }
+      })
+      .then((response) => {
+          return response["data"]
+      })
+      .then((data) => {
+        this.bestTrips = data
+      })
+    },
+
+    getBlog () {
+      axios.get('http://127.0.0.1:8082/blog/?limit=4', {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-type': 'application/json',
+        }
+      })
+      .then((response) => {
+          return response["data"]
+      })
+      .then((data) => {
+        this.blogpost = data
+      })
+    },
+
+    getReview () {
+      axios.get('http://127.0.0.1:8082/review/', {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Content-type': 'application/json',
+        }
+      })
+      .then((response) => {
+          return response["data"]
+      })
+      .then((data) => {
+        this.review = data
+      })
+    }
+      
+  },
 
   mounted () {
-    axios
-      .get('http://127.0.0.1:8082/trip/?sort_by=discount', {
-        headers: {
-       'Access-Control-Allow-Origin': '*',
-       'Content-type': 'application/json',
-    }
-      })
-    .then((response) => {
-          return response["data"]
-        })
-        .then((data) => {
-          console.log("Trips", data)
-          this.triplistdiscount = data
-        })
+    this.getTrips();
+    this.getBestTrip();
+    this.getBlog();
+    this.getReview();
   }
 }
 </script>

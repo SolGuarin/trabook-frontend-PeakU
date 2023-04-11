@@ -1,6 +1,6 @@
 <template>
     <div class="card">
-        <img v-bind:src="img" class="card-img-top img-fluid rounded img">
+        <img v-bind:src="image" class="card-img-top img-fluid rounded img">
             <div class="card-body">
                 <b-row>
                     <b-col>
@@ -12,7 +12,7 @@
                     </b-col>
                     <b-col class="container-discount">
                       <p class="score">⭐{{ score }}</p>
-                      <p class="discount">{{ discount }}</p>
+                      <p class="discount">{{ promo_price }}</p>
                     </b-col>
                 </b-row>
             </div>
@@ -23,12 +23,13 @@
 export default {
   name: 'DealsAndDiscounts',
   props: {
-    img: String,
+    image: String,
     city: String,
     country: String,
     score: String,
     price: Number,
-    discount: Number
+    discount: Number,
+    promo_price: Number
   }
 }
 </script>

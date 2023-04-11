@@ -1,6 +1,6 @@
 <template>
     <div class="card">
-        <img v-bind:src="img" class="card-img-top img-fluid rounded img">
+        <img v-bind:src="image" class="card-img-top img-fluid rounded img">
             <div class="card-body">
               <p class="card-title">{{ title }}</p>
               <p class="card-text">{{ date }}</p>
@@ -12,7 +12,7 @@
 export default {
   name: 'BlogPost',
   props: {
-    img: String,
+    image: String,
     title: String,
     date: String
   }
